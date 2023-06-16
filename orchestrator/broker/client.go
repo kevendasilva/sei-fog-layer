@@ -32,10 +32,12 @@ func CreateMQTTClient() MQTT.Client {
 	brokerUsername := os.Getenv("MQTT_USERNAME")
 	brokerPassword := os.Getenv("MQTT_PASSWORD")
 
+	clientID := os.Getenv("MQTT_CLIENT_ID")
+
 	// Configurações do cliente MQTT
 	opts := MQTT.NewClientOptions()
 	opts.AddBroker(fmt.Sprintf("tcp://%s:%s", brokerHost, brokerPort))
-	opts.SetClientID("go-MQTT-example")
+	opts.SetClientID(clientID)
 	opts.SetUsername(brokerUsername)
 	opts.SetPassword(brokerPassword)
 
